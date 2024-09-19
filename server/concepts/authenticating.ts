@@ -32,4 +32,9 @@ export default class AuthenticatingConcept {
   }
 
   // TODO: Write "authentication" code that makes sure the username exists
+  assertRegistered(username: string) {
+    if (this.users.filter((user) => user.username === username).length === 0) {
+      throw new NotAllowedError(`Username ${username} not registered yet!`);
+    }
+  }
 }
